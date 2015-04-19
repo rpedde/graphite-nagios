@@ -1,0 +1,9 @@
+(define uwsgi-utilization
+  (lambda ()
+    (begin
+      (set! *interval* "30seconds")
+      (define worker-count (length (get-metrics "uwsgi.www*_myorg_com.worker*.avg_rt")))
+      (set! *interval* "10minutes")
+      (define worker-busyness (get-metrics "uwsgi.www*_myorg_com.busyness"))
+      (define used-workers (weighted-average (multi-sum worker-busyness)))
+      (floor (* 100 (/ used-workers worker-count))))))

@@ -1,0 +1,7 @@
+{
+        "endpoint": "https://graphite.myorg.com/render",
+        "username": "secret-username",
+        "password": "secre-password",
+        "scriptdir": "./conf.d",
+        "interval": "5minutes"
+}
